@@ -12,6 +12,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AppComponent implements OnInit {
     title = 'Angular_CRUD_Using_POP_Ups_APP';
     addForm: FormGroup;
+    submitted: boolean = false;
     constructor(private _toastr: ToastrService, private modalService: NgbModal) {
 
     }
@@ -69,6 +70,10 @@ export class AppComponent implements OnInit {
     	this.modalService.open(content, { size: 'xl' });
     }
 
+    get ctrl() {
+        return this.addForm.controls;
+    }
+
     onEdit(userId) {
         alert("Edit Called " + userId);
     }
@@ -78,7 +83,12 @@ export class AppComponent implements OnInit {
     }
 
     addUser() {
+        this.submitted = true;
         console.log(this.addForm.value);
         console.log(this.addForm.valid);
+    }
+
+    onCancel() {
+        this.addForm.reset();
     }
 }

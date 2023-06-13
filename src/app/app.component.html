@@ -12,32 +12,37 @@
                     <div class="row mb-3">
                         <div class="form-group col">
                             <label>Title</label>
-                            <select class="form-control" formControlName="title">
+                            <select class="form-control" formControlName="title" [ngClass]="{ 'is-invalid' : submitted && ctrl['title'].errors }">
                                 <option value="">--Select Title--</option>
                                 <option value="Mr">Mr</option>
                                 <option value="Mrs">Mrs</option>
                                 <option value="Miss">Miss</option>
                                 <option value="Ms">Ms</option>
                             </select>
+                            <div class="invalid-feedback" *ngIf="submitted && ctrl['title'].errors">
+                                <div *ngIf="ctrl['title'].errors['required']">
+                                    Title is required !!
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group col-5">
                             <label>First Name</label>
-                            <input type="text" class="form-control" formControlName="firstName" placeholder="Enter First Name">
+                            <input type="text" class="form-control" formControlName="firstName" placeholder="Enter First Name" [ngClass]="{ 'is-invalid' : submitted && ctrl['firstName'].errors }">
                         </div>
                         <div class="form-group col-5">
                             <label>Last Name</label>
-                            <input type="text" class="form-control" formControlName="lastName" placeholder="Enter Last Name">
+                            <input type="text" class="form-control" formControlName="lastName" placeholder="Enter Last Name" [ngClass]="{ 'is-invalid' : submitted && ctrl['lastName'].errors }">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="form-group col-5">
                             <label>Date of Birth</label>
-                            <input type="date" class="form-control" formControlName="dob">
+                            <input type="date" class="form-control" formControlName="dob" [ngClass]="{ 'is-invalid' : submitted && ctrl['dob'].errors }">
                         </div>
                         <div class="form-group col-5">
                             <label>Email</label>
-                            <input type="text" class="form-control" formControlName="email" placeholder="Enter Email">
+                            <input type="text" class="form-control" formControlName="email" placeholder="Enter Email" [ngClass]="{ 'is-invalid' : submitted && ctrl['email'] }">
                         </div>
                     </div>
 
@@ -62,7 +67,7 @@
                     <div class="row mb-3">
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-success me-2">Save</button>
-                            <button type="button" class="btn btn-danger">Cancel</button>
+                            <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
                         </div>
                     </div>
 
