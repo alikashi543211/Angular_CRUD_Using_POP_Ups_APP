@@ -69,13 +69,16 @@ export class AppComponent implements OnInit {
     	this.modalService.open(content, { size: 'xl' });
     }
 
-
-
     onEdit(userId) {
         alert("Edit Called " + userId);
     }
 
     onDelete(userId) {
         alert("Delete Called " + userId);
+    }
+
+    addUser() {
+        console.log(this.addForm.value);
+        console.log(this.addForm.valid);
     }
 }
